@@ -51,7 +51,7 @@ Now, let's get back to our challenge from step 1, so finding the answer to  **Ho
 
 With the querier this is now super simple.
 
-It's just enough to query Querier for <a href="{{TRAFFIC_HOST1_29090}}/graph?g0.range_input=1h&g0.expr=sum(prometheus_tsdb_head_series)&g0.tab=1&g1.range_input=5m&g1.expr=prometheus_tsdb_head_series&g1.tab=0">`sum(prometheus_tsdb_head_series)`</a>
+It's just enough to query Querier for [`sum(prometheus_tsdb_head_series)`]({{TRAFFIC_HOST1_29090}}/graph?g0.range_input=1h&g0.expr=sum(prometheus_tsdb_head_series)&g0.tab=1&g1.range_input=5m&g1.expr=prometheus_tsdb_head_series&g1.tab=0)
 
 You should see the single value representing the number of series scraped in both clusters in the current mode.
 
@@ -68,7 +68,7 @@ prometheus_tsdb_head_series{cluster="us1",instance="172.17.0.1:9092",job="promet
 Now, as you remember we configured Prometheus 0 US1 and Prometheus 1 US1 to scrape the same things. We also connect Querier
 to both, so how Querier knows what is an HA group?
 
-Try to query the same query as before: <a href="{{TRAFFIC_HOST1_29090}}/graph?g0.range_input=1h&g0.expr=sum(prometheus_tsdb_head_series)&g0.tab=1&g1.range_input=5m&g1.expr=prometheus_tsdb_head_series&g1.tab=0">`prometheus_tsdb_head_series`</a>
+Try to query the same query as before: [`prometheus_tsdb_head_series`]({{TRAFFIC_HOST1_29090}}/graph?g0.range_input=1h&g0.expr=sum(prometheus_tsdb_head_series)&g0.tab=1&g1.range_input=5m&g1.expr=prometheus_tsdb_head_series&g1.tab=0)
 
 Now turn off deduplication (`deduplication` button on Querier UI) and hit `Execute` again. Now you should see 5 results:
 
